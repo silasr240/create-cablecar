@@ -27,8 +27,20 @@ sourceSets.main.resources {
 }
 
 repositories {
-    // Add here additional repositories if required by some of the dependencies below.
+    mavenCentral()
+    maven {
+        name = "NeoForged"
+        url = "https://maven.neoforged.net/releases/"
+    }
+
+    // FIX: Make sure the URL has "api.modrinth.com"
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
 }
+
+
 
 base {
     archivesName = mod_id
@@ -137,6 +149,27 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+
+    //Mods
+
+    // 1. Base Mod: Create
+    // Project ID/Slug: LNytGWDc
+    implementation "maven.modrinth:create:UjX6dr61"
+
+    // 2. Physics Engine: Sable (Required dependency for Aeronautics and Coasters)
+    // Project ID/Slug: sable
+    implementation "maven.modrinth:sable:U678xqle"
+
+    // 3. Create Aeronautics
+    // Project ID/Slug: oWaK0Q19
+    implementation "maven.modrinth:create-aeronautics:44pLdPGg"
+
+    // 4. Create: Coasters Simulated
+    // Project ID/Slug: W1ZUfWdr
+    implementation "maven.modrinth:create-coasters-simulated:PGhQoSBq"
+
+
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
